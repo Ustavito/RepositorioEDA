@@ -74,6 +74,20 @@ public class DoubleLinkedList<E> implements lista<E> {
 		this.cabecera = null;
 		this.trailer = null;
 	}
+	
+	private nodo<E> checkPosition(Position<E> pos) throws RuntimeException {
+		if (pos == null || !(pos instanceof nodo)) {
+			throw new RuntimeException("Posición no válida");
+		}
+		//Se convierte la posicion en un nodo
+		nodo<E> node = (nodo<E>) pos;
+		
+        if (this != node.getMylist()) {
+            throw new RuntimeException("Esa posicion no es de esta lista");
+        }
+        return node;
+		
+	}
 
 	@Override
 	public int size() {
@@ -86,38 +100,81 @@ public class DoubleLinkedList<E> implements lista<E> {
 	}
 
 	@Override
-	public Position<E> first() {
-		// TODO Auto-generated method stub
-		return null;
+	public Position<E> first() throws RuntimeException {
+		if (this.isEmpty()) {
+			throw new RuntimeException("Lista vacía");
+		}
+		return this.cabecera;
 	}
 
 	@Override
-	public Position<E> last() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Position<E> next(Position<E> pos) throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+	public Position<E> last() throws RuntimeException {
+		if (this.isEmpty()) {
+			throw new RuntimeException("Lista vacía");
+		}
+		return this.trailer;
 	}
 
 	@Override
 	public Position<E> previous(Position<E> pos) throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		nodo<E> nodoActual = checkPosition(pos);
+		nodo<E> previo = nodoActual.getPrevNode();
+		
+		if (previo == null) {
+			throw new RuntimeException("Estas en el primer elemento");
+		}
+		
+		return previo;
+	}
+
+	@Override
+	public Position<E> next(Position<E> pos) throws RuntimeException {
+		nodo<E> nodoActual = checkPosition(pos);
+		nodo<E> sig = nodoActual.getNextNode();
+		
+		if (sig == null) {
+			throw new RuntimeException("Estas en el ultimo elemento");
+		}
+		
+		return sig;
 	}
 
 	@Override
 	public Position<E> addFirst(E elemento) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		nodo<E> nuevo;
+		
+		if (this.isEmpty()) {
+			nuevo = new nodo<E>(null, null, elemento, this);
+		}
+		
+		else {
+			nuevo = new nodo<E>(null, this.cabecera, elemento, this);
+			this.cabecera.setPrev(nuevo);
+			this.cabecera = nuevo;
+		}
+		
+		size ++;
+		return nuevo;
 	}
 
 	@Override
 	public Position<E> addLast(E elemento) {
-		// TODO Auto-generated method stub
+		
+		nodo<E> nuevo;
+		
+		if (this.isEmpty()) {
+			nuevo = new nodo<E>(null, null, elemento, this);
+		}
+		else {
+			//Si la lista no es vacia:
+			//1) crea un nodo nuevo y lo enlaza con el final
+			//2) enlaza el final al nodo nuevo
+			//3) actualiza el final para que sea el nodo nuevo
+			nuevo = new nodo<E>(this.trailer, null, elemento, this);
+			this.trailer.setNext(nuevo);
+			this.trailer = nuevo;
+		}
 		return null;
 	}
 
