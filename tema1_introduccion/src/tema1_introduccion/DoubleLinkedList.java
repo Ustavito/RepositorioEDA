@@ -180,7 +180,25 @@ public class DoubleLinkedList<E> implements lista<E> {
 
 	@Override
 	public Position<E> addAfter(Position<E> pos, E elemento) throws RuntimeException {
-		// TODO Auto-generated method stub
+		
+		nodo<E> referenciado = checkPosition(pos);
+		nodo<E> nuevo;
+		
+		if (referenciado == this.cabecera) {
+			nuevo = new nodo<E>(referenciado, null,  elemento, this);
+			referenciado.setNext(nuevo);
+			this.trailer = nuevo;
+			
+			this.cabecera.setNext(nuevo);
+		}
+		
+		else {
+			nuevo = new nodo<E>(referenciado, referenciado.getNextNode(), elemento, this);
+			referenciado.getNextNode().setPrev(nuevo);
+			referenciado.setNext(nuevo);
+			
+		}
+		
 		return null;
 	}
 
