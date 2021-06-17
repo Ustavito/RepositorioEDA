@@ -139,6 +139,7 @@ public class DoubleLinkedList<E> implements lista<E> {
 		return sig;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Position<E> addFirst(E elemento) {
 		
@@ -151,7 +152,7 @@ public class DoubleLinkedList<E> implements lista<E> {
 		else {
 			nuevo = new nodo<E>(null, this.cabecera, elemento, this);
 			this.cabecera.setPrev(nuevo);
-			this.cabecera = nuevo;
+			this.cabecera.setElement((E) nuevo);
 		}
 		
 		size ++;
@@ -198,20 +199,64 @@ public class DoubleLinkedList<E> implements lista<E> {
 			referenciado.setNext(nuevo);
 			
 		}
-		
-		return null;
+		this.size++;
+		return nuevo;
 	}
 
 	@Override
 	public Position<E> addBefore(Position<E> pos, E elemento) throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		nodo<E> referenciado = checkPosition(pos);
+		nodo<E> nuevo;
+		
+		if (referenciado == this.cabecera) {
+			nuevo = new nodo<E> (null, referenciado, elemento, this);
+			referenciado.setPrev(nuevo);
+			this.cabecera = nuevo;
+			this.cabecera.setNext(nuevo.getNextNode());
+		}
+		
+		else {
+			nuevo = new nodo<E>(referenciado.getPrevNode(), referenciado, elemento, this);
+			referenciado.getPrevNode().setNext(nuevo);
+			referenciado.setPrev(nuevo);
+		}
+		
+		this.size ++;
+		
+		
+		return nuevo;
 	}
 
 	@Override
 	public E remove(Position<E> pos) throws RuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		nodo<E> nodoAeliminar = checkPosition(pos);
+		E elementoAeliminar = nodoAeliminar.getElement();
+		
+		if (this.cabecera == this.trailer) {
+			this.cabecera = null;
+			this.trailer = null;
+		}
+		
+		else if (nodoAeliminar == this.cabecera) {
+			this.cabecera = this.cabecera.getNextNode();
+		}
+		
+		else if(nodoAeliminar == this.trailer) {
+			this.trailer = this.trailer.getPrevNode();
+		}
+		
+		else {
+			nodo<E> previoAlEliminado = nodoAeliminar.getPrevNode();
+			nodo<E> posteriorAlEliminado = nodoAeliminar.getNextNode();
+			
+			previoAlEliminado.setNext(posteriorAlEliminado);
+			posteriorAlEliminado.setPrev(previoAlEliminado);
+		}
+		
+		this.size --;
+		
+		
+		return elementoAeliminar;
 	}
 
 	@Override
