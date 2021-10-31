@@ -1,0 +1,10 @@
+package mapas;
+
+public class Alumno {
+	private String nombre;
+	private String dni;
+	private int edad;
+	
+	
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;arboles_binarios.ArratBinaryTree.java&apos; to &apos;ArrayBinaryTree.java&apos;&#x0A;- Original project: &apos;Tema_2_arboles_generales&apos;&#x0A;- Original element: &apos;arboles_binarios.ArratBinaryTree.java&apos;&#x0A;- Renamed element: &apos;arboles_binarios.ArrayBinaryTree.java&apos;" description="Rename compilation unit &apos;ArratBinaryTree.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;arboles_binarios{ArratBinaryTree.java" name="ArrayBinaryTree.java" references="false" stamp="1633944184185" version="1.0"/>
+</session>
