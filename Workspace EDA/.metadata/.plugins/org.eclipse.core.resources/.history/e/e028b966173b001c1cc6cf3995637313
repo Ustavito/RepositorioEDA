@@ -18,9 +18,6 @@ public class HashTableMapSC<K, V> implements Map<K, V> {
 	
 	//CLASE PRIVADA ENTRY, ES COMO EL NODO EN LOS ARBOLES
     private class HashEntry<T, U> implements Entry<T, U> {
-    	
-    	protected T key;
-    	protected U value;
 
         public HashEntry(T k, U v) {
             throw new UnsupportedOperationException("Not yet implemented");
@@ -28,12 +25,12 @@ public class HashTableMapSC<K, V> implements Map<K, V> {
 
         @Override
         public U getValue() {
-        	return this.value;
+        	 throw new UnsupportedOperationException("Not yet implemented");
         }
 
         @Override
         public T getKey() {
-            return this.key;
+            throw new UnsupportedOperationException("Not yet implemented");
         }
 
         public U setValue(U val) {
