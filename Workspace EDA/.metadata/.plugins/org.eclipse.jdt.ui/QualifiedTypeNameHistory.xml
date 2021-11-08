@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="utils.NumberGetter"/>
     <fullyQualifiedTypeName name="org.graalvm.compiler.core.common.type.ArithmeticOpTable.BinaryOp.Xor"/>
+    <fullyQualifiedTypeName name="arboles_binarios.BinaryTree"/>
 </qualifiedTypeNameHistroy>
