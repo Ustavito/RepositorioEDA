@@ -5,6 +5,9 @@ public class Alumno {
 	private String dni;
 	//private int edad;
 	
+	//EJERCICIO 1 - IMPLEMENTAR HASHCODE E EQUALS
+	//HAY QUE SOBREESCRIBIR LOS METODOS DE LA CLASE
+	
 	@Override
 	public int hashCode() {
 		

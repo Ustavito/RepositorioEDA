@@ -12,6 +12,11 @@ package maps;
  * @param <V> value type
  *
  */
+
+//ENTRY ES COMO EL POSITION DE LOS MAPAS
+//PERO YA NO VALE CON UN POSITION, SE NECESITA LA ENTRADA COMPLETA
+
+
 public interface Entry<K, V> {
 
     /**

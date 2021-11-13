@@ -12,8 +12,15 @@ import java.util.Iterator;
  * @param <V> The stored value
  */
 public class HashTableMapSC<K, V> implements Map<K, V> {
+	
+	//EJERCICIO 2 - IMPLEMENTAR UN MAPA
 
+	
+	//CLASE PRIVADA ENTRY, ES COMO EL NODO EN LOS ARBOLES
     private class HashEntry<T, U> implements Entry<T, U> {
+    	
+    	protected T key;
+    	protected U value;
 
         public HashEntry(T k, U v) {
             throw new UnsupportedOperationException("Not yet implemented");
@@ -21,12 +28,12 @@ public class HashTableMapSC<K, V> implements Map<K, V> {
 
         @Override
         public U getValue() {
-            throw new UnsupportedOperationException("Not yet implemented");
+        	return this.value;
         }
 
         @Override
         public T getKey() {
-            throw new UnsupportedOperationException("Not yet implemented");
+            return this.key;
         }
 
         public U setValue(U val) {
